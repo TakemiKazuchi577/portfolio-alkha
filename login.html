@@ -3,22 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Login ke Portfolio Alkha.">
-<title>Login - Alkha</title>
+<title>Login - Portfolio Alkha</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- Login Container -->
 <div class="login-container">
-  <h2>Login Portfolio</h2>
-  <form id="loginForm">
-    <input type="text" placeholder="Username" required>
-    <input type="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
+    <div class="login-box">
+        <h2>Login Portfolio</h2>
+        <form id="loginForm">
+            <input type="text" placeholder="Username" required>
+            <div style="position:relative;">
+                <input type="password" id="passwordInput" placeholder="Password" required>
+                <span id="togglePassword" style="position:absolute; right:10px; top:10px; cursor:pointer; color:#FFD700;">👁️</span>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </div>
 
 <script src="script.js"></script>
+<script>
+/* HIDE/SHOW PASSWORD */
+const togglePassword = document.getElementById('togglePassword');
+const passwordInput = document.getElementById('passwordInput');
+
+togglePassword.addEventListener('click', () => {
+    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passwordInput.setAttribute('type', type);
+});
+</script>
 </body>
 </html>
