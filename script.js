@@ -1,37 +1,13 @@
 /* ===================================
-   LOADING SCREEN
-=================================== */
-document.addEventListener("DOMContentLoaded", function () {
-  const loader = document.createElement('div');
-  loader.id = "loader";
-  loader.style.position = "fixed";
-  loader.style.top = "0";
-  loader.style.left = "0";
-  loader.style.width = "100%";
-  loader.style.height = "100%";
-  loader.style.background = "#000";
-  loader.style.color = "#fff";
-  loader.style.display = "flex";
-  loader.style.alignItems = "center";
-  loader.style.justifyContent = "center";
-  loader.style.fontSize = "32px";
-  loader.style.zIndex = "10000";
-  loader.innerText = "Loading...";
-  document.body.appendChild(loader);
-
-  setTimeout(() => { loader.style.display = "none"; }, 1500);
-});
-
-/* ===================================
    CUSTOM CURSOR
 =================================== */
 const cursor = document.createElement('div');
-cursor.id = "customCursor";
+cursor.id = 'customCursor';
 document.body.appendChild(cursor);
 
 document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + "px";
-  cursor.style.top = e.clientY + "px";
+  cursor.style.top = e.clientY + 'px';
+  cursor.style.left = e.clientX + 'px';
 });
 
 /* ===================================
@@ -40,18 +16,18 @@ document.addEventListener('mousemove', e => {
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   const passwordInput = loginForm.querySelector('input[type="password"]');
-  const toggleBtn = document.createElement('span');
-  toggleBtn.classList.add('toggle-password');
-  toggleBtn.innerText = "Show";
-  passwordInput.parentNode.appendChild(toggleBtn);
+  const togglePass = document.createElement('span');
+  togglePass.classList.add('toggle-password');
+  togglePass.innerText = 'Show Password';
+  passwordInput.parentNode.insertBefore(togglePass, passwordInput.nextSibling);
 
-  toggleBtn.addEventListener('click', () => {
-    if (passwordInput.type === "password") {
-      passwordInput.type = "text";
-      toggleBtn.innerText = "Hide";
+  togglePass.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      togglePass.innerText = 'Hide Password';
     } else {
-      passwordInput.type = "password";
-      toggleBtn.innerText = "Show";
+      passwordInput.type = 'password';
+      togglePass.innerText = 'Show Password';
     }
   });
 
@@ -109,6 +85,7 @@ window.onscroll = function () {
 
 /* ===================================
    GALLERY & PROJECTS HOVER INTERAKTIF
+   (membesar & mengikuti cursor)
 =================================== */
 const hoverItems = document.querySelectorAll('.gallery-grid img, .projects-grid img, .projects-grid video');
 
@@ -133,42 +110,25 @@ hoverItems.forEach(item => {
 });
 
 /* ===================================
-   CONTACT FORM
+   LOADING SCREEN
 =================================== */
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = contactForm[0].value.trim();
-    const email = contactForm[1].value.trim();
-    const message = contactForm[2].value.trim();
+document.addEventListener("DOMContentLoaded", function () {
+  const loader = document.createElement('div');
+  loader.id = "loader";
+  loader.style.position = "fixed";
+  loader.style.top = "0";
+  loader.style.left = "0";
+  loader.style.width = "100%";
+  loader.style.height = "100%";
+  loader.style.background = "#000";
+  loader.style.color = "#fff";
+  loader.style.display = "flex";
+  loader.style.alignItems = "center";
+  loader.style.justifyContent = "center";
+  loader.style.fontSize = "30px";
+  loader.style.zIndex = "10000";
+  loader.innerText = "Loading...";
+  document.body.appendChild(loader);
 
-    if (name && email && message) {
-      alert(`Terima kasih ${name}, pesanmu telah terkirim!`);
-      contactForm.reset();
-    } else {
-      alert("Silakan lengkapi semua kolom!");
-    }
-  });
-}
-
-/* ===================================
-   RGB ANIMASI DI TEPI LAYAR
-=================================== */
-const edgeEffect = document.createElement('div');
-edgeEffect.style.position = 'fixed';
-edgeEffect.style.top = 0;
-edgeEffect.style.left = 0;
-edgeEffect.style.width = '100%';
-edgeEffect.style.height = '100%';
-edgeEffect.style.pointerEvents = 'none';
-edgeEffect.style.background = 'radial-gradient(circle at 50% 50%, rgba(0,255,255,0.15), transparent 70%)';
-edgeEffect.style.zIndex = 9998;
-edgeEffect.style.transition = 'background 0.3s';
-document.body.appendChild(edgeEffect);
-
-document.addEventListener('mousemove', (e) => {
-  const x = e.clientX / window.innerWidth;
-  const y = e.clientY / window.innerHeight;
-  edgeEffect.style.background = `radial-gradient(circle at ${x*100}% ${y*100}%, rgba(0,255,255,0.15), transparent 70%)`;
+  setTimeout(() => { loader.style.display = "none"; }, 1500);
 });
