@@ -3,38 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contact - Portfolio Alkha</title>
+<meta name="description" content="Kontak Alkha, developer futuristik dan modern.">
+<title>Contact - Alkha</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="preloader"><div class="loader"></div></div>
 
+<!-- Navbar -->
 <nav class="navbar">
   <div class="logo">Alkha</div>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="projects.html">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><button id="logoutBtn" class="btn">Logout</button></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="#" id="logoutBtn">Logout</a></li>
   </ul>
-  <div class="burger"><div></div><div></div><div></div></div>
 </nav>
 
-<section id="contact" class="hidden">
-  <h1>Contact Me</h1>
-  <p>Email: <a href="mailto:ralkhafatihali@gmail.com">ralkhafatihali@gmail.com</a></p>
-  <p>Instagram: <a href="https://instagram.com/kha.velll" target="_blank">@kha.velll</a></p>
-  <p>Phone: 082261047699 / 085134124177</p>
-</section>
+<!-- Contact Section -->
+<section class="contact">
+  <h1>Hubungi Saya</h1>
+  <p>Jika ada pertanyaan, kolaborasi, atau pekerjaan freelance, silakan hubungi melalui salah satu metode berikut:</p>
 
-<footer>
-  <p>&copy; 2025 Alkha Portfolio</p>
-  <div class="social-icons">
-    <a href="https://instagram.com/kha.velll" target="_blank"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-    <a href="mailto:ralkhafatihali@gmail.com"><img src="assets/icons/gmail.svg" alt="Gmail"></a>
+  <div class="contact-links">
+    <a href="mailto:ralkhafatihali@gmail.com">
+      <img src="assets/icons/gmail.svg" alt="Gmail">
+      ralkhafatihali@gmail.com
+    </a>
+    <a href="https://instagram.com/kha.velll" target="_blank">
+      <img src="assets/icons/instagram.svg" alt="Instagram">
+      kha.velll
+    </a>
+    <p>Telepon: 082261047699 / 085134124177</p>
   </div>
-</footer>
+
+  <form id="contactForm">
+    <input type="text" placeholder="Nama Anda" required>
+    <input type="email" placeholder="Email Anda" required>
+    <textarea placeholder="Pesan Anda" rows="6" required></textarea>
+    <button type="submit">Kirim Pesan</button>
+  </form>
+</section>
 
 <script src="script.js"></script>
 </body>

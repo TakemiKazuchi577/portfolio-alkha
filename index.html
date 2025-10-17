@@ -3,45 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Home - Portfolio Alkha</title>
+<meta name="description" content="Portfolio futuristik dan modern Alkha.">
+<title>Portfolio Alkha</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="preloader"><div class="loader"></div></div>
 
-<!-- NAVBAR + LOGOUT -->
+<!-- Navbar -->
 <nav class="navbar">
   <div class="logo">Alkha</div>
   <ul class="nav-links">
-    <li><a href="#hero">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="projects.html">Projects</a></li>
     <li><a href="contact.html">Contact</a></li>
-    <li><button id="logoutBtn" class="btn">Logout</button></li>
+    <li><a href="#" id="logoutBtn">Logout</a></li>
   </ul>
-  <div class="burger"><div></div><div></div><div></div></div>
 </nav>
 
-<section id="hero" class="hero hidden">
-  <h1>Hi, I'm Alkha</h1>
-  <p>Welcome to my futuristic & interactive portfolio</p>
-  <a href="projects.html" class="btn">View Projects</a>
+<!-- Hero Section -->
+<section class="hero">
+  <h1>Selamat Datang di Portfolio Alkha</h1>
+  <p>Website futuristik, modern, interaktif, dan elegan</p>
 </section>
 
-<section class="media-grid hidden">
-  <div class="media-item"><img src="assets/images/01.jpg" alt=""></div>
-  <div class="media-item"><img src="assets/images/02.jpg" alt=""></div>
-  <div class="media-item"><img src="assets/images/03.jpg" alt=""></div>
-  <div class="media-item"><video src="assets/videos/001.mp4" autoplay muted loop></video></div>
-</section>
-
-<footer>
-  <p>&copy; 2025 Alkha Portfolio</p>
-  <div class="social-icons">
-    <a href="https://instagram.com/kha.velll" target="_blank"><img src="assets/icons/instagram.svg" alt="Instagram"></a>
-    <a href="mailto:ralkhafatihali@gmail.com"><img src="assets/icons/gmail.svg" alt="Gmail"></a>
+<!-- Gallery Preview -->
+<section class="gallery">
+  <h2>Preview Projects</h2>
+  <div class="gallery-grid">
+    <img src="assets/images/01.jpg" alt="Project 1">
+    <img src="assets/images/02.jpg" alt="Project 2">
+    <img src="assets/images/03.jpg" alt="Project 3">
+    <img src="assets/images/04.jpg" alt="Project 4">
+    <img src="assets/images/05.jpg" alt="Project 5">
+    <video controls src="assets/videos/001.mp4"></video>
   </div>
-</footer>
+</section>
 
 <script src="script.js"></script>
 </body>

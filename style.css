@@ -1,338 +1,283 @@
-/* ==============================
-   RESET & GLOBAL
-============================== */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ===============================
+   FONTS
+=============================== */
+@font-face {
+    font-family: 'Montserrat-Bold';
+    src: url('assets/fonts/Montserrat-Bold.woff') format('woff');
 }
-body{
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #87ceeb, #00bfff);
+@font-face {
+    font-family: 'Montserrat-Italic';
+    src: url('assets/fonts/Montserrat-Italic.woff') format('woff');
+}
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('assets/fonts/Roboto-Bold.woff') format('woff');
+}
+@font-face {
+    font-family: 'Roboto-Medium';
+    src: url('assets/fonts/Roboto-Medium.woff') format('woff');
+}
+
+/* ===============================
+   RESET & BASE
+=============================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Roboto-Medium', sans-serif;
+    background: linear-gradient(135deg, #87CEFA, #1E90FF);
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
-    overflow-x:hidden;
-    color:#fff;
-    transition: background 1s ease, color 0.5s ease;
+    color: #fff;
+    min-height: 100vh;
 }
-@keyframes gradientBG{
+
+/* ===============================
+   GRADIENT ANIMATION
+=============================== */
+@keyframes gradientBG {
     0%{background-position:0% 50%;}
     50%{background-position:100% 50%;}
     100%{background-position:0% 50%;}
 }
 
-/* ==============================
-   FONTS
-============================== */
-@font-face{
-    font-family:'Montserrat';
-    src: url('assets/fonts/Montserrat-Bold.woff') format('woff');
-    font-weight:bold;
-}
-@font-face{
-    font-family:'Montserrat';
-    src: url('assets/fonts/Montserrat-Italic.woff') format('woff');
-    font-style:italic;
-}
-@font-face{
-    font-family:'Roboto';
-    src:url('assets/fonts/Roboto-Bold.woff') format('woff');
-    font-weight:bold;
-}
-@font-face{
-    font-family:'Roboto';
-    src:url('assets/fonts/Roboto-Medium.woff') format('woff');
-    font-weight:500;
+/* ===============================
+   CURSOR FUTURISTIK
+=============================== */
+body {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="32" width="32"><circle cx="16" cy="16" r="8" fill="white"/></svg>') 16 16, auto;
 }
 
-/* ==============================
-   PRELOADER
-============================== */
-#preloader{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%; height:100%;
-    background:#000;
-    display:flex; justify-content:center; align-items:center;
-    z-index:9999;
-    transition: opacity 0.5s ease;
-}
-.loader{
-    border:5px solid #fff;
-    border-top:5px solid #00ffff;
-    border-radius:50%;
-    width:50px; height:50px;
-    animation:spin 1s linear infinite;
-}
-@keyframes spin{
-    0%{transform:rotate(0deg);}
-    100%{transform:rotate(360deg);}
-}
-
-/* ==============================
-   CUSTOM CURSOR
-============================== */
-.cursor{
-    position:fixed;
-    top:0; left:0;
-    width:25px; height:25px;
-    background:rgba(0,255,255,0.7);
-    border-radius:50%;
-    pointer-events:none;
-    transform:translate(-50%, -50%);
-    transition:width 0.2s ease, height 0.2s ease, background 0.3s ease;
-    z-index:10000;
-}
-
-/* ==============================
+/* ===============================
    NAVBAR
-============================== */
-.navbar{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:60px;
-    background:rgba(0,0,50,0.8);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:0 20px;
-    transition:top 0.3s ease, background 0.5s ease;
-    z-index:1000;
+=============================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    z-index: 999;
+    font-family: 'Montserrat-Bold', sans-serif;
+    backdrop-filter: blur(5px);
 }
-.navbar .logo{
-    font-family: 'Montserrat', sans-serif;
-    font-size:24px;
-    font-weight:bold;
-    color:#00ffff;
-    letter-spacing:1px;
+.navbar .logo {
+    font-size: 24px;
+    letter-spacing: 2px;
 }
-.nav-links{
-    display:flex;
-    list-style:none;
-    align-items:center;
-    transition:all 0.3s ease;
+.navbar .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
 }
-.nav-links li{
-    margin-left:20px;
+.navbar .nav-links li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
 }
-.nav-links a, .nav-links button{
-    text-decoration:none;
-    color:#fff;
-    font-weight:500;
-    transition:0.3s;
-    background:none;
-    border:none;
-    cursor:pointer;
-    font-size:16px;
-}
-.nav-links button.btn{
-    padding:5px 12px;
-    border:1px solid #00ffff;
-    border-radius:5px;
-}
-.nav-links a:hover, .nav-links button:hover{
-    color:#00ffff;
-    transform:scale(1.1);
-    text-shadow:0 0 10px #00ffff;
-}
-.burger{
-    display:none;
-    flex-direction:column;
-    cursor:pointer;
-}
-.burger div{
-    width:25px;
-    height:3px;
-    background:#fff;
-    margin:4px;
-    transition:all 0.3s ease;
+.navbar .nav-links li a:hover {
+    color: #FFD700;
 }
 
-/* ==============================
-   HERO / LOGIN SECTION
-============================== */
-.hero, .login-section{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    text-align:center;
-    flex-direction:column;
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity 1s ease, transform 1s ease;
+/* ===============================
+   HERO SECTION
+=============================== */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100vh;
+    font-family: 'Montserrat-Bold', sans-serif;
+    gap: 20px;
 }
-.hero h1{
-    font-family:'Montserrat', sans-serif;
-    font-size:48px;
-    margin-bottom:10px;
-    color:#00ffff;
+.hero h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
 }
-.hero p{
-    font-size:20px;
-    margin-bottom:20px;
-    font-weight:500;
-}
-.login-section{
-    background:linear-gradient(135deg, #000022, #000044);
-}
-.login-container{
-    background:rgba(0,0,0,0.7);
-    padding:40px 30px;
-    border-radius:15px;
-    width:320px;
-    box-shadow:0 0 30px #00ffff;
-}
-.login-container h2{
-    margin-bottom:25px;
-    font-family: 'Montserrat', sans-serif;
-    color:#00ffff;
-    font-size:28px;
-}
-.login-container input{
-    width:100%;
-    padding:12px;
-    margin-bottom:18px;
-    border:none;
-    border-radius:10px;
-    outline:none;
-    font-size:16px;
-}
-.login-container button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:10px;
-    background:#00ffff;
-    color:#000;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-    font-size:16px;
-}
-.login-container button:hover{
-    background:#00dddd;
-}
-#errorMsg{
-    margin-top:10px;
-    color:#ff4d4d;
-    font-size:14px;
+.hero p {
+    font-size: 20px;
+    font-family: 'Roboto-Medium', sans-serif;
 }
 
-/* ==============================
-   MEDIA GRID
-============================== */
-.media-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:25px;
-    padding:60px 20px;
+/* ===============================
+   ABOUT SECTION
+=============================== */
+.about {
+    padding: 80px 50px;
+    max-width: 1000px;
+    margin: 0 auto;
 }
-.media-item{
-    overflow:hidden;
-    border:2px solid #00ffff;
-    border-radius:15px;
-    transition:all 0.4s ease;
-    cursor:pointer;
+.about h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-family: 'Montserrat-Bold', sans-serif;
 }
-.media-item img, .media-item video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:transform 0.3s ease, filter 0.3s ease;
-}
-.media-item:hover img, .media-item:hover video{
-    filter:brightness(1.1);
+.about p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.6;
 }
 
-/* ==============================
-   BUTTONS & LINKS
-============================== */
-.btn{
-    padding:12px 25px;
-    border:1px solid #00ffff;
-    border-radius:6px;
-    color:#fff;
-    background:none;
-    cursor:pointer;
-    font-weight:500;
-    transition:all 0.3s ease;
-    letter-spacing:0.5px;
+/* ===============================
+   GALLERY GRID
+=============================== */
+.gallery-grid, .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+    gap: 20px;
+    padding: 40px 50px;
 }
-.btn:hover{
-    background:#00ffff;
-    color:#000;
-    box-shadow:0 0 20px #00ffff, 0 0 40px #00ffff;
-    transform:scale(1.1);
+.gallery-grid img, .projects-grid img, .projects-grid video {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    border: 3px solid rgba(255,255,255,0.3);
+    cursor: pointer;
 }
-
-/* ==============================
-   FOOTER
-============================== */
-footer{
-    text-align:center;
-    padding:40px 20px;
-    background:rgba(0,0,50,0.9);
-}
-footer p{
-    font-size:14px;
-}
-footer .social-icons{
-    margin-top:12px;
-}
-footer .social-icons img{
-    width:32px;
-    margin:0 12px;
-    transition:all 0.3s ease;
-}
-footer .social-icons img:hover{
-    transform:scale(1.3) rotate(5deg);
+.gallery-grid img:hover, .projects-grid img:hover, .projects-grid video:hover {
+    transform: scale(1.05);
+    border-color: #FFD700;
 }
 
-/* ==============================
-   ANIMATIONS
-============================== */
-.hidden{
-    opacity:0;
-    transform:translateY(30px);
-    transition:opacity 1s ease, transform 1s ease;
+/* ===============================
+   CONTACT SECTION
+=============================== */
+.contact {
+    padding: 80px 50px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
 }
-.hidden.visible{
-    opacity:1;
-    transform:translateY(0);
+.contact h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+.contact-links a img {
+    width: 24px;
+    height: 24px;
 }
 
-/* ==============================
+/* ===============================
+   CONTACT FORM
+=============================== */
+#contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+#contactForm input, #contactForm textarea {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+#contactForm button {
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #FFD700;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+#contactForm button:hover {
+    transform: scale(1.05);
+}
+
+/* ===============================
+   LOGIN FORM
+=============================== */
+.login-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.7);
+    padding: 50px;
+    border-radius: 20px;
+    width: 350px;
+    text-align: center;
+}
+.login-container h2 {
+    margin-bottom: 30px;
+    font-family: 'Montserrat-Bold', sans-serif;
+}
+.login-container input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+.login-container button {
+    width: 100%;
+    padding: 15px;
+    border-radius: 12px;
+    border: none;
+    background: #FFD700;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.login-container button:hover {
+    transform: scale(1.05);
+}
+
+/* ===============================
+   LOADER
+=============================== */
+#loader {
+    font-family: 'Montserrat-Bold', sans-serif;
+    text-align: center;
+}
+
+/* ===============================
    RESPONSIVE
-============================== */
-@media(max-width:1024px){
-    .hero h1{font-size:40px;}
-    .hero p{font-size:18px;}
-}
+=============================== */
 @media(max-width:768px){
-    .burger{display:flex;}
-    .nav-links{
-        position:fixed;
-        right:-100%;
-        top:60px;
-        height:calc(100% - 60px);
-        flex-direction:column;
-        background:rgba(0,0,50,0.95);
-        width:220px;
-        padding-top:30px;
+    .navbar{
+        padding: 10px 20px;
     }
-    .nav-links li{margin:25px 0;}
-    .media-grid{
-        gap:20px;
-        padding:40px 10px;
+    .hero h1{
+        font-size: 36px;
     }
-}
-@media(max-width:480px){
-    .hero h1{font-size:32px;}
-    .hero p{font-size:16px;}
-    .login-container{width:90%;}
-    .btn{padding:10px 18px;}
+    .hero p{
+        font-size: 16px;
+    }
+    .about, .contact{
+        padding: 60px 20px;
+    }
+    .gallery-grid, .projects-grid{
+        padding: 20px;
+        gap: 15px;
+    }
 }
