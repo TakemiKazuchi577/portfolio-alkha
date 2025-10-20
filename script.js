@@ -1,35 +1,33 @@
 /* ===================================
-   CUSTOM CURSOR
-=================================== */
-const cursor = document.createElement('div');
-cursor.id = 'customCursor';
-document.body.appendChild(cursor);
-
-document.addEventListener('mousemove', e => {
-  cursor.style.top = e.clientY + 'px';
-  cursor.style.left = e.clientX + 'px';
-});
-
-/* ===================================
    LOGIN FORM
 =================================== */
 const loginForm = document.getElementById('loginForm');
 if (loginForm) {
   const passwordInput = loginForm.querySelector('input[type="password"]');
-  const togglePass = document.createElement('span');
-  togglePass.classList.add('toggle-password');
-  togglePass.innerText = 'Show Password';
-  passwordInput.parentNode.insertBefore(togglePass, passwordInput.nextSibling);
 
-  togglePass.addEventListener('click', () => {
-    if (passwordInput.type === 'password') {
-      passwordInput.type = 'text';
-      togglePass.innerText = 'Hide Password';
+  // Tambah tombol show/hide password
+  const toggleBtn = document.createElement('button');
+  toggleBtn.type = "button";
+  toggleBtn.textContent = "👁";
+  toggleBtn.style.position = "absolute";
+  toggleBtn.style.right = "15px";
+  toggleBtn.style.top = "50%";
+  toggleBtn.style.transform = "translateY(-50%)";
+  toggleBtn.style.background = "transparent";
+  toggleBtn.style.border = "none";
+  toggleBtn.style.cursor = "pointer";
+  toggleBtn.style.color = "#fff";
+  toggleBtn.style.fontSize = "16px";
+  toggleBtn.style.outline = "none";
+  toggleBtn.addEventListener('click', () => {
+    if (passwordInput.type === "password") {
+      passwordInput.type = "text";
     } else {
-      passwordInput.type = 'password';
-      togglePass.innerText = 'Show Password';
+      passwordInput.type = "password";
     }
   });
+  passwordInput.parentElement.style.position = "relative";
+  passwordInput.parentElement.appendChild(toggleBtn);
 
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -92,14 +90,14 @@ const hoverItems = document.querySelectorAll('.gallery-grid img, .projects-grid 
 hoverItems.forEach(item => {
   item.addEventListener('mousemove', (e) => {
     const rect = item.getBoundingClientRect();
-    const x = e.clientX - rect.left;
+    const x = e.clientX - rect.left; // posisi cursor di elemen
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 5;
+    const rotateX = ((y - centerY) / centerY) * 5; // rotasi max 5deg
     const rotateY = ((x - centerX) / centerX) * 5;
 
-    item.style.transform = `scale(1.08) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
+    item.style.transform = `scale(1.08) rotateX(${ -rotateX }deg) rotateY(${ rotateY }deg)`;
     item.style.transition = 'transform 0.1s ease-out';
   });
 
@@ -131,4 +129,15 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.appendChild(loader);
 
   setTimeout(() => { loader.style.display = "none"; }, 1500);
+});
+
+/* ===================================
+   CUSTOM CURSOR
+=================================== */
+const cursor = document.createElement('div');
+cursor.classList.add('cursor');
+document.body.appendChild(cursor);
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
 });
